@@ -6,8 +6,17 @@ class RoomsController < ApplicationController
 
   def show
     if Room.exists?(params[:id])
-      room = room.find(params[:id])
+      room = Room.find(params[:id])
       render json: room.to_json, status: 200
+    else
+      render json: { error_msg: 'Record Not Found!', id: params[:id] }.to_json, status: 404
+    end
+  end
+
+  def chats
+    if Room.exists?(params[:id])
+      room = Room.find(params[:id])
+      render json: room.chats.to_json, status: 200
     else
       render json: { error_msg: 'Record Not Found!', id: params[:id] }.to_json, status: 404
     end
