@@ -1,8 +1,7 @@
 class CreateRooms < ActiveRecord::Migration
   def change
     create_table :rooms do |t|
-      t.string :name
-      has_many :users, through: :chats
+      t.string :name, null: false
       t.timestamps null: false
     end
   end
