@@ -20,9 +20,9 @@ class ChatsController < ApplicationController
 
   def create
     chat = Chat.new
-      chat.message   = params.fetch(:message)
-      chat.user_id   = params.fetch(:user_id)
-      chat.room_id   = params.fetch(:room_id)
+      chat.message = params.fetch(:message)
+      chat.user_id = params.fetch(:user_id)
+      chat.room_id = params.fetch(:room_id)
       chat.save
       render json: chat, status: 201
   end
