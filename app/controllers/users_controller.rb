@@ -18,7 +18,18 @@ class UsersController < ApplicationController
   end
 
   def create
-
+    if params[:name].nil? || params[:name].empty?
+      err_msg = "The 'name' entry was empty or not found"
+      render json: { err_msg: err_msg }, status: 422
+    else
+      user = User.new
+      user.name = params[:name]
+      user.username = params.fetch(:username)
+      user.email  = params.fetch(:email )
+      user.about = params.fetch(:about)
+      user.save
+      render json: user, status: 201
+    end
   end
 
   def update
