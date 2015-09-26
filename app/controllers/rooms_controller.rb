@@ -36,7 +36,15 @@ class RoomsController < ApplicationController
   end
 
   def create
-
+    if params[:name].nil? || params[:name].empty?
+      err_msg = "The 'name' entry was empty or not found"
+      render json: { err_msg: err_msg }, status: 422
+    else
+      room = Room.new
+      room.name = params[:name]
+      room.save
+      render json: room, status: 201
+    end
   end
 
   def update

@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   end
 
   def new
-
+    empty = User.new
+    render json: empty, status: 200
   end
 
   def create
