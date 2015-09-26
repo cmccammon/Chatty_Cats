@@ -12,6 +12,14 @@ class UsersController < ApplicationController
       render json: { error_msg: 'Record Not Found!', id: params[:id] }.to_json, status: 404
     end
   end
+  def profile
+    if User.exists?(params[:id])
+      profile = User.where(id:params[:id]).select("name, username, email")
+      render json: profile.to_json, status: 200
+    else
+      render json: { error_msg: 'Record Not Found!', id: params[:id] }.to_json, status: 404
+    end
+  end
 
   def new
     empty = User.new
