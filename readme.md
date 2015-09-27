@@ -1,9 +1,28 @@
-###All ‘GET’ requests will be in JSON format. All ‘post’, ‘create’ and ‘delete’ posts must be in plain text format.
+
+#Chatty-Cats  
+##Description  
+This is the backend readme.md for our hackathon project. We had a three person team made up of 2 front-end people and one rails developer. We created a cat themed chat program, with specific rooms and user accounts. Users can be in multiple rooms.  
+
+## Features
+
+* Chat with multiple people in a chat room
+* Choose from a list of available rooms
+* Create new users
+* Create new chat rooms
+* View users profiles
+
+
+
+
+
+##Instructions for API
+
+###All ‘GET’ requests will be in JSON format. All ‘post’, ‘create’ and ‘delete’ posts must be in plain text format per this link.
 
 
 **Show all Chats for all rooms:**
 
-To ‘get’ all chats for all rooms, use;  
+To 'get' all chats for all rooms, use;  
 <https://chatty-cats.herokuapp.com/chats>
 
 **Show all Chats for a Room:**
