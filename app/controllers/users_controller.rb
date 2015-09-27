@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       user.name = params[:name]
       user.username = params.fetch(:username)
       user.email  = params.fetch(:email )
-      user.about = params.fetch(:about)
+      user.about = params.fetch(:about)#using about as insecure password storage.
       user.save
       render json: user, status: 201
     end
@@ -46,6 +46,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
+    if User.exists?(params[:id])
+      user = User.find(params[:id])
+      user.destroy
+      render json: { message: "User profile Deleted Successfully." }, status: 200
+    else
+      render json: { err_msg: 'No project found with that ID', id: params[:id] }.to_json, status: 404
+    end
   end
 end

@@ -52,7 +52,13 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-
+    if Room.exists?(params[:id])
+      room = Room.find(params[:id])
+      room.destroy
+      render json: { message: "Room Deleted Successfully." }, status: 200
+    else
+      render json: { err_msg: 'No room found with that ID', id: params[:id] }.to_json, status: 404
+    end
   end
 
 end
